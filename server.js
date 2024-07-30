@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const next = require('next');
+require('dotenv').config();  // Ensure this line is included to load environment variables
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -9,12 +10,10 @@ const handle = app.getRequestHandler();
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
+}).then(() => {
   console.log('Connected to MongoDB');
+}).catch(err => {
+  console.error('Failed to connect to MongoDB', err);
 });
 
 app.prepare().then(() => {
