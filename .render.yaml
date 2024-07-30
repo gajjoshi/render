@@ -7,4 +7,4 @@ services:
     startCommand: 'npm start'
     envVars:
       - key: MONGODB_URI
-        value: mongodb+srv://Prime:prime@cluster0.mtl5kau.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+        value: 'mongodb+srv://Prime:prime@cluster0.mtl5kau.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
